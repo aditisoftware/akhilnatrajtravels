@@ -21,14 +21,14 @@ public partial class contactus : System.Web.UI.Page
 
             SmtpClient client = new SmtpClient("smtp.gmail.com");
             client.Port = 587;
-            client.EnableSsl = true;
+            client.EnableSsl = false;
             client.Timeout = 100000;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
-            client.Credentials = new NetworkCredential("akhiltours@gmail.com", "yourgmailpassword");
+            client.Credentials = new NetworkCredential("jani.parixit@gmail.com", "immortal007");
             MailMessage msg = new MailMessage();
             msg.To.Add("jani.parixit@gmail.com");
-            msg.From = new MailAddress("akhiltours@gmail.com");
+            msg.From = new MailAddress("jani.parixit@gmail.com");
             msg.Subject = txtsubject.Text;
             msg.Body = msgBody;
             client.Send(msg);
@@ -50,6 +50,7 @@ public partial class contactus : System.Web.UI.Page
         }
         catch (Exception ex)
         {
+            lblStatus.Visible = true;
             lblStatus.Text="There might be an error, Please try after some time.";
         }
         finally {

@@ -20,7 +20,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 contact-form wow fadeInLeft">
+                    <div class="form-group">
                         <asp:Label ID="lblStatus" runat="server" Text="Thanks for contacting us. We'll get get back to you soon!" class="alert alert-danger" Visible="false"></asp:Label>
+                    </div>
                     <div class="form-group">
                         <label for="contact-name">Name</label>
                         <asp:TextBox runat="server" name="contact-name" placeholder="Enter your name..." class="contact-name" ID="textname" />
