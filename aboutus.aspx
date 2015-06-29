@@ -16,7 +16,7 @@
     </div>
 
     <!-- Services Full Width Text -->
-    <div class="services-full-width-container">
+    <div class="services-full-width-container" style="color:#000;font-size:14px;">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 services-full-width-text wow fadeInLeft">
@@ -40,9 +40,9 @@
             </div>
         </div>
     </div>
-    <div class="services-full-width-container">
+    <div class="services-full-width-container" style="color:#000;font-size:14px;">
         <div class="container">
-            <div class="row">
+            <div class="row text-left">
                 <h4>Why Us?</h4>
             </div>
             <div class="row">
