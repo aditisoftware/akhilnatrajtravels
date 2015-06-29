@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col-md-6 margin-bottom-15">
                         <label for="Rate" class="control-label">Package Rate</label>
-                        <asp:TextBox runat="server" class="form-control" id="rate" value="" name="rate" />
+                        <asp:TextBox runat="server" class="form-control" id="rate" value="" name="rate" >00</asp:TextBox>
                     </div>
                 </div>
                 <div class="row">

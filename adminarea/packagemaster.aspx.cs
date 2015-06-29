@@ -21,13 +21,18 @@ public partial class packagemaster : System.Web.UI.Page
     }
     protected void save_Click(object sender, EventArgs e)
     {
-        int o = oper.DBOperation.execute("insert into package values(" + tourid.Text + ",'" + packagetitle.Text + "','" + rate.Text + "','" + Description.Text + "','" + packageimage.FileName + "','" + pdffile.FileName + "','" + daynight.Text + "','" + Destination.Text + "','" + itenary.FileName + "')");
+        string price = "0.0";
+
+        if(rate.Text.Trim() != "") 
+            price = rate.Text;
+
+        int o = oper.DBOperation.execute("insert into package values(" + tourid.Text + ",'" + packagetitle.Text + "','" + price + "','" + Description.Text + "','" + packageimage.FileName + "','" + pdffile.FileName + "','" + daynight.Text + "','" + Destination.Text + "','" + itenary.FileName + "')");
         if (o != 0)
         {
             uploadfile(oper.DBOperation.getRow("select max(id) from package")[0].ToString());
             bindGrid();
             packagetitle.Text = "";
-            rate.Text = "";
+            rate.Text = "0.0";
             Description.Text = "";
             daynight.Text = "";
             Destination.Text ="";
@@ -52,7 +57,7 @@ public partial class packagemaster : System.Web.UI.Page
             bindGrid();
             uploadfile(id.Value.ToString());
             packagetitle.Text = "";
-            rate.Text = "";
+            rate.Text = "0.0";
             Description.Text = "";
             daynight.Text = "";
             Destination.Text = "";
@@ -80,7 +85,7 @@ public partial class packagemaster : System.Web.UI.Page
             bool isdeleted = deleteFiles(datarow);
             bindGrid();
             packagetitle.Text = "";
-            rate.Text = "";
+            rate.Text = "0.0";
             Description.Text = "";
             daynight.Text = "";
             Destination.Text = "";
@@ -161,7 +166,7 @@ public partial class packagemaster : System.Web.UI.Page
             pdffilename = "pdffile = '" + pdfdoc.FileName + "',";
         }
 
-        string itenaryfilename = "itenary = '" + files[0] + "'";
+        string itenaryfilename = "itenary = '" + files[2] + "'";
         if (itenary.HasFile)
         {
             if (System.IO.File.Exists(Server.MapPath("~/resourcefile/packages/") + id.ToString() + "\\" + files[2]))
