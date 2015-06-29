@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-sm-12 wow fadeIn">
                     <i class="fa fa-tasks"></i>
-                    <h1>About Us /</h1>
+                    <h1>About Us</h1>
                 </div>
             </div>
         </div>
