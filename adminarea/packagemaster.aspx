@@ -28,12 +28,6 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 margin-bottom-15">
-                        <label for="Rate" class="control-label">Package Rate</label>
-                        <asp:TextBox runat="server" class="form-control" id="rate" value="" name="rate" >00</asp:TextBox>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 margin-bottom-15">
                         <label for="packageimage" class="control-label">Package image</label>
                         <asp:FileUpload class="form-control" id="packageimage" name="packageimage" value="" runat="server" />
                     </div>
@@ -62,6 +56,116 @@
                         <asp:TextBox runat="server" class="form-control" id="Destination" value="" name="Destination" />
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12 margin-bottom-30">
+                        <a href="javascript:void(0);" id="addmoreprice" class="btn btn-default">Price</a>
+                    </div>
+                </div>
+                <div class="row" id="pricerate">
+                    <div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="ratetitle1" value="" name="ratetitle1" />
+                        </div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="rate1" value="" name="rate1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="pricerate">
+                    <div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="ratetitle2" value="" name="ratetitle2" />
+                        </div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="rate2" value="" name="rate2" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="pricerate">
+                    <div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="ratetitle3" value="" name="ratetitle3" />
+                        </div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="rate3" value="" name="rate3" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="pricerate">
+                    <div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="ratetitle4" value="" name="ratetitle4" />
+                        </div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="rate4" value="" name="rate4" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="pricerate">
+                    <div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="ratetitle5" value="" name="ratetitle5" />
+                        </div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="rate5" value="" name="rate5" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 margin-bottom-30">
+                        <a href="javascript:void(0);" id="addmoreinclusion" class="btn btn-default">Inclusions</a>
+                    </div>
+                </div>
+                <div class="row" id="inclusions">
+                    <div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="inclusiontitle1" value="" name="inclusiontitle1" />
+                        </div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:CheckBox id="togglefield1" runat="server" name="togglefield1" class="form-control" value="1"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="inclusions">
+                    <div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="inclusiontitle2" value="" name="inclusiontitle2" />
+                        </div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:CheckBox id="togglefield2" runat="server" name="togglefield2" class="form-control" value="1"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="inclusions">
+                    <div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="inclusiontitle3" value="" name="inclusiontitle3" />
+                        </div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:CheckBox id="togglefield3" runat="server" name="togglefield3" class="form-control" value="1"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="inclusions">
+                    <div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="inclusiontitle4" value="" name="inclusiontitle4" />
+                        </div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:CheckBox id="togglefield4" runat="server" name="togglefield4" class="form-control" value="1"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="inclusions">
+                    <div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:TextBox runat="server" class="form-control" id="inclusiontitle5" value="" name="inclusiontitle5" />
+                        </div>
+                        <div class="col-md-6 margin-bottom-30" id="priceblock">
+                            <asp:CheckBox id="togglefield5" runat="server" name="togglefield5" class="form-control" value="1"/>
+                        </div>
+                    </div>
+                </div>                
                 <div class="row">
                     <div class="col-md-6 margin-bottom-15">
                         <label for="Rate" class="control-label">Description</label>
@@ -107,5 +211,29 @@
             </form>
         </div>
     </div>
+    <script>
+        $("#addmoreprice").click(function(){
+            var objarr = "#pricerate";
+            var arrDiv = $(objarr+" > div");
+            var id = arrDiv.length;
+            id++;
+            var objDiv = arrDiv[arrDiv.length-1];
+            objDiv = $(objDiv).clone();
+            $(objDiv).find("[id=ratetitle"+(id-1)+"]").attr({name:"ratetitle"+id,id:"ratetitle"+id}).val("");
+            $(objDiv).find("[id=rate"+(id-1)+"]").attr({name:"rate"+id,id:"rate"+id}).val("");
+            $(objDiv).appendTo(objarr);
+        });
+        $("#addmoreinclusion").click(function(){
+            var objarr = "#inclusions";
+            var arrDiv = $(objarr+" > div");
+            var id = arrDiv.length;
+            id++;
+            var objDiv = arrDiv[arrDiv.length-1];
+            objDiv = $(objDiv).clone();
+            $(objDiv).find("[id=inclusiontitle"+(id-1)+"]").attr({name:"inclusiontitle"+id,id:"inclusiontitle"+id}).val("");
+            $(objDiv).find("[id=togglefield"+(id-1)+"]").attr({name:"togglefield"+id,id:"togglefield"+id}).val("");
+            $(objDiv).appendTo(objarr);
+        });        
+    </script>
 </asp:Content>
 

@@ -30,6 +30,10 @@ public partial class packagemaster : System.Web.UI.Page
         if (o != 0)
         {
             uploadfile(oper.DBOperation.getRow("select max(id) from package")[0].ToString());
+            for(int i=1;i<=5;i++){
+                int rat = oper.DBOperation.execute("insert into packagerate values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + ratetitle1.Text + "','" + rate.Text + "')");
+                int inc = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + pacakgeinexclusions.Text + "'," + togglefield.Text + ")");
+            }
             bindGrid();
             packagetitle.Text = "";
             rate.Text = "0.0";
@@ -55,6 +59,9 @@ public partial class packagemaster : System.Web.UI.Page
         if (o != 0)
         {
             bindGrid();
+            int rat = oper.DBOperation.execute("delete packagerate where packageid = '" + id.Value + "'");
+            int rat = oper.DBOperation.execute("delete pacakgeinexclusions where packageid = '" + id.Value + "'");
+
             uploadfile(id.Value.ToString());
             packagetitle.Text = "";
             rate.Text = "0.0";
@@ -84,6 +91,8 @@ public partial class packagemaster : System.Web.UI.Page
         {
             bool isdeleted = deleteFiles(datarow);
             bindGrid();
+            int rat = oper.DBOperation.execute("delete packagerate where packageid = '" + id.Value + "'");
+            int rat = oper.DBOperation.execute("delete pacakgeinexclusions where packageid = '" + id.Value + "'");
             packagetitle.Text = "";
             rate.Text = "0.0";
             Description.Text = "";
@@ -118,7 +127,8 @@ public partial class packagemaster : System.Web.UI.Page
         rate.Text = datarow[3].ToString();
         daynight.Text = datarow[7].ToString();
         Destination.Text = datarow[8].ToString();
-
+        DataSet getRateSet = oper.DBOperation.getDataSet("select * from packagerate where packageid = '" + grdPackage.Rows[grdPackage.SelectedIndex].Cells[1].Text + "'");
+        DataSet getIncSet = oper.DBOperation.getDataSet("select * from pacakgeinexclusions where packageid = '" + grdPackage.Rows[grdPackage.SelectedIndex].Cells[1].Text + "'");
         Save.Visible = false;
         Delete.Visible = true;
         Update.Visible = true;
