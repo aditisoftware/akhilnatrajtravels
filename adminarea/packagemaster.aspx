@@ -40,8 +40,14 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 margin-bottom-15">
-                        <label for="itenary" class="control-label">Itenary(DOC/DOCX)</label>
+                        <label for="itenary" class="control-label">Itenary Image</label>
                         <asp:FileUpload class="form-control" id="itenary" value="" name="itenary" runat="server" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 margin-bottom-15">
+                        <label for="packagedoc" class="control-label">Package Doc/DOCX</label>
+                        <asp:FileUpload class="form-control" id="packagedoc" value="" name="packagedoc" runat="server" />
                     </div>
                 </div>
                 <div class="row">
