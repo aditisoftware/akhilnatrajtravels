@@ -64,6 +64,9 @@ public partial class packagemaster : System.Web.UI.Page
             if(exclusiontitle5.Text.Trim() != "")
                 inc2 = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + exclusiontitle5.Text + "',0)");
 
+            int monres = 0;            
+            monres = oper.DBOperation.execute("insert into packagedays values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + month1.Text + "','" + month2.Text + "','" + month3.Text + "','" + month4.Text + "','" + month5.Text + "','" + month6.Text + "','" + month7.Text + "','" + month8.Text + "','" + month9.Text + "','" + month10.Text + "','" + month11.Text + "','" + month12.Text + "')");
+
             bindGrid();
             packagetitle.Text = "";
             Description.Text = "";
@@ -89,6 +92,19 @@ public partial class packagemaster : System.Web.UI.Page
             exclusiontitle3.Text = "";
             exclusiontitle4.Text = "";
             exclusiontitle5.Text = "";
+            month1.Text = "";
+            month2.Text = "";
+            month3.Text = "";
+            month4.Text = "";
+            month5.Text = "";
+            month6.Text = "";
+            month7.Text = "";
+            month8.Text = "";
+            month9.Text = "";
+            month10.Text = "";
+            month11.Text = "";
+            month12.Text = "";
+
             lblStatus.Visible = true;
             lblStatus.ForeColor = System.Drawing.Color.Green;
             lblStatus.Text = "Inserted Sucessfully";
@@ -110,6 +126,7 @@ public partial class packagemaster : System.Web.UI.Page
             bindGrid();
             int delrat = oper.DBOperation.execute("delete packagerate where packageid = '" + id.Value + "'");
             int delinc = oper.DBOperation.execute("delete pacakgeinexclusions where packageid = '" + id.Value + "'");
+            int delmon = oper.DBOperation.execute("delete packagedays where packageid = '" + id.Value + "'");
 
             uploadfile(id.Value.ToString());
             int rat = 0;
@@ -147,6 +164,9 @@ public partial class packagemaster : System.Web.UI.Page
                 inc2 = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + exclusiontitle4.Text + "',0)");
             if(exclusiontitle5.Text.Trim() != "")
                 inc2 = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + exclusiontitle5.Text + "',0)");
+            
+            int monres = 0;            
+            monres = oper.DBOperation.execute("insert into packagedays values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + month1.Text + "','" + month2.Text + "','" + month3.Text + "','" + month4.Text + "','" + month5.Text + "','" + month6.Text + "','" + month7.Text + "','" + month8.Text + "','" + month9.Text + "','" + month10.Text + "','" + month11.Text + "','" + month12.Text + "')");
 
             packagetitle.Text = "";
             Description.Text = "";
@@ -179,6 +199,18 @@ public partial class packagemaster : System.Web.UI.Page
             exclusiontitle3.Text = "";
             exclusiontitle4.Text = "";
             exclusiontitle5.Text = "";
+            month1.Text = "";
+            month2.Text = "";
+            month3.Text = "";
+            month4.Text = "";
+            month5.Text = "";
+            month6.Text = "";
+            month7.Text = "";
+            month8.Text = "";
+            month9.Text = "";
+            month10.Text = "";
+            month11.Text = "";
+            month12.Text = "";
         }
         else
         {
@@ -197,6 +229,8 @@ public partial class packagemaster : System.Web.UI.Page
             bindGrid();
             int rat = oper.DBOperation.execute("delete packagerate where packageid = '" + id.Value + "'");
             int inc = oper.DBOperation.execute("delete pacakgeinexclusions where packageid = '" + id.Value + "'");
+            int delmon = oper.DBOperation.execute("delete packagedays where packageid = '" + id.Value + "'");
+
             packagetitle.Text = "";
             Description.Text = "";
             daynight.Text = "";
@@ -221,6 +255,18 @@ public partial class packagemaster : System.Web.UI.Page
             exclusiontitle3.Text = "";
             exclusiontitle4.Text = "";
             exclusiontitle5.Text = "";
+            month1.Text = "";
+            month2.Text = "";
+            month3.Text = "";
+            month4.Text = "";
+            month5.Text = "";
+            month6.Text = "";
+            month7.Text = "";
+            month8.Text = "";
+            month9.Text = "";
+            month10.Text = "";
+            month11.Text = "";
+            month12.Text = "";
             lblStatus.Visible = true;
             lblStatus.ForeColor = System.Drawing.Color.Green;
             lblStatus.Text = "Delete Sucessfully";
@@ -303,6 +349,21 @@ public partial class packagemaster : System.Web.UI.Page
             exclusiontitle4.Text = getIncSet.Rows[3]["inclusiontitle"].ToString();
         if (getExcSet.Rows.Count >= 5)
             exclusiontitle5.Text = getIncSet.Rows[4]["inclusiontitle"].ToString();
+
+        object[] dayrow = oper.DBOperation.getRow("select [month1],[month2],[month3],[month4],[month5],[month6],[month7],[month8],[month9],[month10],[month11],[month12] from package where id = '" + grdPackage.Rows[grdPackage.SelectedIndex].Cells[1].Text + "'");
+
+        month1.Text = dayrow[0].ToString();
+        month2.Text = dayrow[1].ToString();
+        month3.Text = dayrow[2].ToString();
+        month4.Text = dayrow[3].ToString();
+        month5.Text = dayrow[4].ToString();
+        month6.Text = dayrow[5].ToString();
+        month7.Text = dayrow[6].ToString();
+        month8.Text = dayrow[7].ToString();
+        month9.Text = dayrow[8].ToString();
+        month10.Text = dayrow[9].ToString();
+        month11.Text = dayrow[10].ToString();
+        month12.Text = dayrow[11].ToString();
 
         Save.Visible = false;
         Delete.Visible = true;
