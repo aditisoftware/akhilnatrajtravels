@@ -350,20 +350,21 @@ public partial class packagemaster : System.Web.UI.Page
         if (getExcSet.Rows.Count >= 5)
             exclusiontitle5.Text = getIncSet.Rows[4]["inclusiontitle"].ToString();
 
-        object[] dayrow = oper.DBOperation.getRow("select [month1],[month2],[month3],[month4],[month5],[month6],[month7],[month8],[month9],[month10],[month11],[month12] from package where id = '" + grdPackage.Rows[grdPackage.SelectedIndex].Cells[1].Text + "'");
-
-        month1.Text = dayrow[0].ToString();
-        month2.Text = dayrow[1].ToString();
-        month3.Text = dayrow[2].ToString();
-        month4.Text = dayrow[3].ToString();
-        month5.Text = dayrow[4].ToString();
-        month6.Text = dayrow[5].ToString();
-        month7.Text = dayrow[6].ToString();
-        month8.Text = dayrow[7].ToString();
-        month9.Text = dayrow[8].ToString();
-        month10.Text = dayrow[9].ToString();
-        month11.Text = dayrow[10].ToString();
-        month12.Text = dayrow[11].ToString();
+        object[] dayrow = oper.DBOperation.getRow("select [month1],[month2],[month3],[month4],[month5],[month6],[month7],[month8],[month9],[month10],[month11],[month12] from packagedays where packageid = '" + grdPackage.Rows[grdPackage.SelectedIndex].Cells[1].Text + "'");
+        if(dayrow != null){
+            month1.Text = dayrow[0].ToString();
+            month2.Text = dayrow[1].ToString();
+            month3.Text = dayrow[2].ToString();
+            month4.Text = dayrow[3].ToString();
+            month5.Text = dayrow[4].ToString();
+            month6.Text = dayrow[5].ToString();
+            month7.Text = dayrow[6].ToString();
+            month8.Text = dayrow[7].ToString();
+            month9.Text = dayrow[8].ToString();
+            month10.Text = dayrow[9].ToString();
+            month11.Text = dayrow[10].ToString();
+            month12.Text = dayrow[11].ToString();
+        }
 
         Save.Visible = false;
         Delete.Visible = true;
