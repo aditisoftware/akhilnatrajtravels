@@ -23,23 +23,72 @@ public partial class packagemaster : System.Web.UI.Page
     {
         string price = "0.0";
 
-        if(rate.Text.Trim() != "") 
-            price = rate.Text;
-
         int o = oper.DBOperation.execute("insert into package values(" + tourid.Text + ",'" + packagetitle.Text + "','" + price + "','" + Description.Text + "','" + packageimage.FileName + "','" + pdffile.FileName + "','" + daynight.Text + "','" + Destination.Text + "','" + itenary.FileName + "')");
         if (o != 0)
         {
             uploadfile(oper.DBOperation.getRow("select max(id) from package")[0].ToString());
-            for(int i=1;i<=5;i++){
-                int rat = oper.DBOperation.execute("insert into packagerate values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + ratetitle1.Text + "','" + rate.Text + "')");
-                int inc = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + pacakgeinexclusions.Text + "'," + togglefield.Text + ")");
-            }
+
+            int rat = 0;
+            if(ratetitle1.Text.Trim() != "")
+                rat = oper.DBOperation.execute("insert into packagerate values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + ratetitle1.Text + "','" + rate1.Text + "')");
+            if(ratetitle2.Text.Trim() != "")
+                rat = oper.DBOperation.execute("insert into packagerate values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + ratetitle2.Text + "','" + rate2.Text + "')");
+            if(ratetitle3.Text.Trim() != "")
+                rat = oper.DBOperation.execute("insert into packagerate values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + ratetitle3.Text + "','" + rate3.Text + "')");
+            if(ratetitle4.Text.Trim() != "")
+                rat = oper.DBOperation.execute("insert into packagerate values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + ratetitle4.Text + "','" + rate4.Text + "')");
+            if(ratetitle5.Text.Trim() != "")
+                rat = oper.DBOperation.execute("insert into packagerate values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + ratetitle5.Text + "','" + rate5.Text + "')");
+
+            int inc = 0;
+            if(inclusiontitle1.Text.Trim() != "")
+                inc = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + inclusiontitle1.Text + "',1)");
+            if(inclusiontitle2.Text.Trim() != "")
+                inc = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + inclusiontitle2.Text + "',1)");
+            if(inclusiontitle3.Text.Trim() != "")
+                inc = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + inclusiontitle3.Text + "',1)");
+            if(inclusiontitle4.Text.Trim() != "")
+                inc = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + inclusiontitle4.Text + "',1)");
+            if(inclusiontitle5.Text.Trim() != "")                
+                inc = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + inclusiontitle5.Text + "',1)");
+
+            int inc2 = 0;
+            if(exclusiontitle1.Text.Trim() != "")            
+                inc2 = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + exclusiontitle1.Text + "',0)");
+            if(exclusiontitle2.Text.Trim() != "")
+                inc2 = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + exclusiontitle2.Text + "',0)");
+            if(exclusiontitle3.Text.Trim() != "")
+                inc2 = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + exclusiontitle3.Text + "',0)");
+            if(exclusiontitle4.Text.Trim() != "")
+                inc2 = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + exclusiontitle4.Text + "',0)");
+            if(exclusiontitle5.Text.Trim() != "")
+                inc2 = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + exclusiontitle5.Text + "',0)");
+
             bindGrid();
             packagetitle.Text = "";
-            rate.Text = "0.0";
             Description.Text = "";
             daynight.Text = "";
             Destination.Text ="";
+            ratetitle1.Text = "";
+            rate1.Text = "";
+            ratetitle2.Text = "";
+            rate2.Text = "";
+            ratetitle3.Text = "";
+            rate3.Text = "";
+            ratetitle4.Text = "";
+            rate4.Text = "";
+            ratetitle5.Text = "";
+            rate5.Text = "";
+            inclusiontitle1.Text = "";
+            inclusiontitle2.Text = "";
+            inclusiontitle3.Text = "";
+            inclusiontitle4.Text = "";
+            inclusiontitle5.Text = "";
+            exclusiontitle1.Text = "";
+            exclusiontitle2.Text = "";
+            exclusiontitle3.Text = "";
+            exclusiontitle4.Text = "";
+            exclusiontitle5.Text = "";
             lblStatus.Visible = true;
             lblStatus.ForeColor = System.Drawing.Color.Green;
             lblStatus.Text = "Inserted Sucessfully";
@@ -55,16 +104,51 @@ public partial class packagemaster : System.Web.UI.Page
     protected void Update_Click(object sender, EventArgs e)
     {
 
-        int o = oper.DBOperation.execute("Update package set packagetitle= '" + packagetitle.Text + "',tourid='" + tourid.Text + "',rate = '" + rate.Text + "',description = '" + Description.Text + "',daynight = '" + daynight.Text + "',destination= '" + Destination.Text + "' where id = " + id.Value + "");
+        int o = oper.DBOperation.execute("Update package set packagetitle= '" + packagetitle.Text + "',tourid='" + tourid.Text + "',rate = '0.0',description = '" + Description.Text + "',daynight = '" + daynight.Text + "',destination= '" + Destination.Text + "' where id = " + id.Value + "");
         if (o != 0)
         {
             bindGrid();
-            int rat = oper.DBOperation.execute("delete packagerate where packageid = '" + id.Value + "'");
-            int rat = oper.DBOperation.execute("delete pacakgeinexclusions where packageid = '" + id.Value + "'");
+            int delrat = oper.DBOperation.execute("delete packagerate where packageid = '" + id.Value + "'");
+            int delinc = oper.DBOperation.execute("delete pacakgeinexclusions where packageid = '" + id.Value + "'");
 
             uploadfile(id.Value.ToString());
+            int rat = 0;
+            if(ratetitle1.Text.Trim() != "")
+                rat = oper.DBOperation.execute("insert into packagerate values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + ratetitle1.Text + "','" + rate1.Text + "')");
+            if(ratetitle2.Text.Trim() != "")
+                rat = oper.DBOperation.execute("insert into packagerate values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + ratetitle2.Text + "','" + rate2.Text + "')");
+            if(ratetitle3.Text.Trim() != "")
+                rat = oper.DBOperation.execute("insert into packagerate values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + ratetitle3.Text + "','" + rate3.Text + "')");
+            if(ratetitle4.Text.Trim() != "")
+                rat = oper.DBOperation.execute("insert into packagerate values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + ratetitle4.Text + "','" + rate4.Text + "')");
+            if(ratetitle5.Text.Trim() != "")
+                rat = oper.DBOperation.execute("insert into packagerate values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + ratetitle5.Text + "','" + rate5.Text + "')");
+
+            int inc = 0;
+            if(inclusiontitle1.Text.Trim() != "")
+                inc = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + inclusiontitle1.Text + "',1)");
+            if(inclusiontitle2.Text.Trim() != "")
+                inc = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + inclusiontitle2.Text + "',1)");
+            if(inclusiontitle3.Text.Trim() != "")
+                inc = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + inclusiontitle3.Text + "',1)");
+            if(inclusiontitle4.Text.Trim() != "")
+                inc = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + inclusiontitle4.Text + "',1)");
+            if(inclusiontitle5.Text.Trim() != "")                
+                inc = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + inclusiontitle5.Text + "',1)");
+
+            int inc2 = 0;
+            if(exclusiontitle1.Text.Trim() != "")            
+                inc2 = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + exclusiontitle1.Text + "',0)");
+            if(exclusiontitle2.Text.Trim() != "")
+                inc2 = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + exclusiontitle2.Text + "',0)");
+            if(exclusiontitle3.Text.Trim() != "")
+                inc2 = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + exclusiontitle3.Text + "',0)");
+            if(exclusiontitle4.Text.Trim() != "")
+                inc2 = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + exclusiontitle4.Text + "',0)");
+            if(exclusiontitle5.Text.Trim() != "")
+                inc2 = oper.DBOperation.execute("insert into pacakgeinexclusions values(" + oper.DBOperation.getRow("select max(id) from package")[0].ToString() + ",'" + exclusiontitle5.Text + "',0)");
+
             packagetitle.Text = "";
-            rate.Text = "0.0";
             Description.Text = "";
             daynight.Text = "";
             Destination.Text = "";
@@ -75,6 +159,26 @@ public partial class packagemaster : System.Web.UI.Page
             Delete.Visible = false;
             Update.Visible = false;
             lblStatus.Visible = true;
+            ratetitle1.Text = "";
+            rate1.Text = "";
+            ratetitle2.Text = "";
+            rate2.Text = "";
+            ratetitle3.Text = "";
+            rate3.Text = "";
+            ratetitle4.Text = "";
+            rate4.Text = "";
+            ratetitle5.Text = "";
+            rate5.Text = "";
+            inclusiontitle1.Text = "";
+            inclusiontitle2.Text = "";
+            inclusiontitle3.Text = "";
+            inclusiontitle4.Text = "";
+            inclusiontitle5.Text = "";
+            exclusiontitle1.Text = "";
+            exclusiontitle2.Text = "";
+            exclusiontitle3.Text = "";
+            exclusiontitle4.Text = "";
+            exclusiontitle5.Text = "";
         }
         else
         {
@@ -92,12 +196,31 @@ public partial class packagemaster : System.Web.UI.Page
             bool isdeleted = deleteFiles(datarow);
             bindGrid();
             int rat = oper.DBOperation.execute("delete packagerate where packageid = '" + id.Value + "'");
-            int rat = oper.DBOperation.execute("delete pacakgeinexclusions where packageid = '" + id.Value + "'");
+            int inc = oper.DBOperation.execute("delete pacakgeinexclusions where packageid = '" + id.Value + "'");
             packagetitle.Text = "";
-            rate.Text = "0.0";
             Description.Text = "";
             daynight.Text = "";
             Destination.Text = "";
+            ratetitle1.Text = "";
+            rate1.Text = "";
+            ratetitle2.Text = "";
+            rate2.Text = "";
+            ratetitle3.Text = "";
+            rate3.Text = "";
+            ratetitle4.Text = "";
+            rate4.Text = "";
+            ratetitle5.Text = "";
+            rate5.Text = "";
+            inclusiontitle1.Text = "";
+            inclusiontitle2.Text = "";
+            inclusiontitle3.Text = "";
+            inclusiontitle4.Text = "";
+            inclusiontitle5.Text = "";
+            exclusiontitle1.Text = "";
+            exclusiontitle2.Text = "";
+            exclusiontitle3.Text = "";
+            exclusiontitle4.Text = "";
+            exclusiontitle5.Text = "";
             lblStatus.Visible = true;
             lblStatus.ForeColor = System.Drawing.Color.Green;
             lblStatus.Text = "Delete Sucessfully";
@@ -124,11 +247,63 @@ public partial class packagemaster : System.Web.UI.Page
         id.Value = datarow[0].ToString();
         tourid.Text = datarow[1].ToString();
         packagetitle.Text = datarow[2].ToString();
-        rate.Text = datarow[3].ToString();
         daynight.Text = datarow[7].ToString();
         Destination.Text = datarow[8].ToString();
-        DataSet getRateSet = oper.DBOperation.getDataSet("select * from packagerate where packageid = '" + grdPackage.Rows[grdPackage.SelectedIndex].Cells[1].Text + "'");
-        DataSet getIncSet = oper.DBOperation.getDataSet("select * from pacakgeinexclusions where packageid = '" + grdPackage.Rows[grdPackage.SelectedIndex].Cells[1].Text + "'");
+        Description.Text = datarow[4].ToString();
+        DataTable getRateTable = oper.DBOperation.getTable("select * from packagerate where packageid = " + grdPackage.Rows[grdPackage.SelectedIndex].Cells[1].Text + " order by id");
+        if (getRateTable.Rows.Count > 0)
+        {
+            if (getRateTable.Rows.Count >= 1)
+            {
+                ratetitle1.Text = getRateTable.Rows[0]["ratetitle"].ToString();
+                rate1.Text = getRateTable.Rows[0]["rate"].ToString();
+            }
+            if (getRateTable.Rows.Count >= 2)
+            {
+                ratetitle2.Text = getRateTable.Rows[1]["ratetitle"].ToString();
+                rate2.Text = getRateTable.Rows[1]["rate"].ToString();
+            }
+            if (getRateTable.Rows.Count >= 3)
+            {
+                ratetitle3.Text = getRateTable.Rows[2]["ratetitle"].ToString();
+                rate3.Text = getRateTable.Rows[2]["rate"].ToString();
+            }
+            if (getRateTable.Rows.Count >= 4)
+            {
+                ratetitle4.Text = getRateTable.Rows[3]["ratetitle"].ToString();
+                rate4.Text = getRateTable.Rows[3]["rate"].ToString();
+            }
+            if (getRateTable.Rows.Count >= 5)
+            {
+                ratetitle5.Text = getRateTable.Rows[4]["ratetitle"].ToString();
+                rate5.Text = getRateTable.Rows[4]["rate"].ToString();
+            }            
+        }
+
+        DataTable getIncSet = oper.DBOperation.getTable("select * from pacakgeinexclusions where packageid = " + grdPackage.Rows[grdPackage.SelectedIndex].Cells[1].Text + " and togglefield = 1 order by id");
+        if (getIncSet.Rows.Count >= 1)
+            inclusiontitle1.Text = getIncSet.Rows[0]["inclusiontitle"].ToString();
+        if (getIncSet.Rows.Count >= 2)
+            inclusiontitle2.Text = getIncSet.Rows[1]["inclusiontitle"].ToString();
+        if (getIncSet.Rows.Count >= 3)
+            inclusiontitle3.Text = getIncSet.Rows[2]["inclusiontitle"].ToString();
+        if (getIncSet.Rows.Count >= 4)
+            inclusiontitle4.Text = getIncSet.Rows[3]["inclusiontitle"].ToString();
+        if (getIncSet.Rows.Count >= 5)
+            inclusiontitle5.Text = getIncSet.Rows[4]["inclusiontitle"].ToString();
+
+        DataTable getExcSet = oper.DBOperation.getTable("select * from pacakgeinexclusions where packageid = " + grdPackage.Rows[grdPackage.SelectedIndex].Cells[1].Text + " and togglefield = 0 order by id");
+        if (getExcSet.Rows.Count >= 1)
+            exclusiontitle1.Text = getIncSet.Rows[0]["inclusiontitle"].ToString();
+        if (getExcSet.Rows.Count >= 2)
+            exclusiontitle2.Text = getIncSet.Rows[1]["inclusiontitle"].ToString();
+        if (getExcSet.Rows.Count >= 3)
+            exclusiontitle3.Text = getIncSet.Rows[2]["inclusiontitle"].ToString();
+        if (getExcSet.Rows.Count >= 4)
+            exclusiontitle4.Text = getIncSet.Rows[3]["inclusiontitle"].ToString();
+        if (getExcSet.Rows.Count >= 5)
+            exclusiontitle5.Text = getIncSet.Rows[4]["inclusiontitle"].ToString();
+
         Save.Visible = false;
         Delete.Visible = true;
         Update.Visible = true;
