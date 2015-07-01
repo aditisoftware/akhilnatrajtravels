@@ -72,14 +72,13 @@
             <asp:Repeater ID="rptpackagelist" runat="server" DataSourceID="SqlDataSource2">
                 <HeaderTemplate>
                     <div class="row">
-                    	<div class="col-sm-12 portfolio-masonry">
+                        <div class="col-sm-12 portfolio-masonry">
                 </HeaderTemplate>
                 <ItemTemplate>
                     <div class="portfolio-box web-design">
                         <div class="portfolio-box-container">
                             <a href="/packageview.aspx?id=<%# Eval("id")%>"><img style="max-height:200px;" alt="Tour" data-at2x="resourcefile/packages/<%# Eval("id") %>/<%# Eval("packageimage") %>" src="resourcefile/packages/<%# Eval("id") %>/<%# Eval("packageimage") %>" /></a>
                             <h3><%# Eval("packagetitle") %></h3>
-                            <p><%# Eval("description").ToString().Substring(0, Math.Min(Eval("description").ToString().Length, 150)) %></p>
                             <div class="work-bottom">
                                 <a class="big-link-2 view-work" href="resourcefile/packages/<%# Eval("id") %>/<%# Eval("packageimage") %>"><i class="fa fa-search"></i></a>
                                 <a class="big-link-2" href="/packageview.aspx?id=<%# Eval("id")%>"><i class="fa fa-link"></i></a>
@@ -88,7 +87,7 @@
                     </div>
                 </ItemTemplate>
                 <FooterTemplate>
-                		</div>
+                        </div>
                     </div>
                 </FooterTemplate>
             </asp:Repeater>
