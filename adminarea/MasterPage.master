@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/adminarea/MasterPage.master.cs" Inherits="admin_MasterPage" %>
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48,7 +47,7 @@
             </footer>
         </div>
     </body>
-    <script src="resources/js/jquery.min.js"></script>
+    <script src="r+esources/js/jquery.min.js"></script>
     <script src="resources/js/bootstrap.min.js"></script>
     <script src="resources/js/Chart.min.js"></script>
     <script src="resources/js/templatemo_script.js"></script>

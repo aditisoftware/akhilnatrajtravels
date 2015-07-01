@@ -120,7 +120,7 @@ public partial class packagemaster : System.Web.UI.Page
     protected void Update_Click(object sender, EventArgs e)
     {
 
-        int o = oper.DBOperation.execute("Update package set packagetitle= '" + packagetitle.Text + "',tourid='" + tourid.Text + "',rate = '0.0',description = '" + Description.Text + "',daynight = '" + daynight.Text + "',destination= '" + Destination.Text + "' where id = " + id.Value + "");
+        int o = oper.DBOperation.execute("Update package set packagetitle= '" + packagetitle.Text + "',tourid='" + tourid.Text + "',rate = '0.0',description = '" + Description.Text.ToString().Replace("'","\"") + "',daynight = '" + daynight.Text + "',destination= '" + Destination.Text + "' where id = " + id.Value + "");
         if (o != 0)
         {
             bindGrid();
