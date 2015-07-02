@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/adminarea/MasterPage.master" AutoEventWireup="true" CodeFile="packagemaster.aspx.cs" Inherits="packagemaster" %>
-
+<%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -269,9 +269,9 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6 margin-bottom-15">
+                    <div class="col-md-12 margin-bottom-15">
                         <label for="Rate" class="control-label">Description</label>
-                        <asp:TextBox runat="server" class="form-control" id="Description" value="" name="Description" rows="5" TextMode="multiline"/>
+                        <CKEditor:CKEditorControl ID="Description" BasePath="~/ckeditor" runat="server"></CKEditor:CKEditorControl>
                     </div>
                 </div>
                 <div class="row">

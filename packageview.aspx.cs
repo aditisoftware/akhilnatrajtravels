@@ -56,28 +56,28 @@ public partial class packageview : System.Web.UI.Page
                 exclusion = "<div class='text-danger'><ul style='list-style-type: none;padding: 0;'>" + exclusion + "</ul></div>";
             }
             DataTable getRateTable = oper.DBOperation.getTable("select * from packagerate where packageid = " + Request.QueryString["id"] + " order by id");
-            if (getRateTable.Rows.Count >= 1){rates = rates + "<li>" +  getRateTable.Rows[0]["ratetitle"].ToString() + " - " + getRateTable.Rows[0]["rate"].ToString() + "</li>";}
-            if (getRateTable.Rows.Count >= 2){rates = rates + "<li>" +  getRateTable.Rows[1]["ratetitle"].ToString() + " - " + getRateTable.Rows[1]["rate"].ToString() + "</li>";}
-            if (getRateTable.Rows.Count >= 3){rates = rates + "<li>" +  getRateTable.Rows[2]["ratetitle"].ToString() + " - " + getRateTable.Rows[2]["rate"].ToString() + "</li>";}
-            if (getRateTable.Rows.Count >= 4){rates = rates + "<li>" +  getRateTable.Rows[3]["ratetitle"].ToString() + " - " + getRateTable.Rows[3]["rate"].ToString() + "</li>";}
-            if (getRateTable.Rows.Count >= 5){rates = rates + "<li>" +  getRateTable.Rows[4]["ratetitle"].ToString() + " - " + getRateTable.Rows[4]["rate"].ToString() + "</li>";}
+            if (getRateTable.Rows.Count >= 1){rates = rates + "<div class='col-md-6 text-right'>" +  getRateTable.Rows[0]["ratetitle"].ToString() + "</div> <div class='col-md-6 text-left'>" + getRateTable.Rows[0]["rate"].ToString() + "</div>";}
+            if (getRateTable.Rows.Count >= 2){rates = rates + "<div class='col-md-6 text-right'>" +  getRateTable.Rows[1]["ratetitle"].ToString() + "</div> <div class='col-md-6 text-left'>" + getRateTable.Rows[1]["rate"].ToString() + "</div>";}
+            if (getRateTable.Rows.Count >= 3){rates = rates + "<div class='col-md-6 text-right'>" +  getRateTable.Rows[2]["ratetitle"].ToString() + "</div> <div class='col-md-6 text-left'>" + getRateTable.Rows[2]["rate"].ToString() + "</div>";}
+            if (getRateTable.Rows.Count >= 4){rates = rates + "<div class='col-md-6 text-right'>" +  getRateTable.Rows[3]["ratetitle"].ToString() + "</div> <div class='col-md-6 text-left'>" + getRateTable.Rows[3]["rate"].ToString() + "</div>";}
+            if (getRateTable.Rows.Count >= 5){rates = rates + "<div class='col-md-6 text-right'>" +  getRateTable.Rows[4]["ratetitle"].ToString() + "</div> <div class='col-md-6 text-left'>" + getRateTable.Rows[4]["rate"].ToString() + "</div>";}
             if(rates.Length  > 0){
                 rates = "<div><ul style='list-style-type: none;padding: 0;'>" + rates + "</ul></div>";
             }
             object[] dayrow = oper.DBOperation.getRow("select [month1],[month2],[month3],[month4],[month5],[month6],[month7],[month8],[month9],[month10],[month11],[month12] from packagedays where packageid = '" + Request.QueryString["id"] + "'");
             if(dayrow != null){
-                month1.Text = dayrow[0].ToString();
-                month2.Text = dayrow[1].ToString();
-                month3.Text = dayrow[2].ToString();
-                month4.Text = dayrow[3].ToString();
-                month5.Text = dayrow[4].ToString();
-                month6.Text = dayrow[5].ToString();
-                month7.Text = dayrow[6].ToString();
-                month8.Text = dayrow[7].ToString();
-                month9.Text = dayrow[8].ToString();
-                month10.Text = dayrow[9].ToString();
-                month11.Text = dayrow[10].ToString();
-                month12.Text = dayrow[11].ToString();
+                month1.Text = dayrow[0].ToString() + "&nbsp;";
+                month2.Text = dayrow[1].ToString() + "&nbsp;";
+                month3.Text = dayrow[2].ToString() + "&nbsp;";
+                month4.Text = dayrow[3].ToString() + "&nbsp;";
+                month5.Text = dayrow[4].ToString() + "&nbsp;";
+                month6.Text = dayrow[5].ToString() + "&nbsp;";
+                month7.Text = dayrow[6].ToString() + "&nbsp;";
+                month8.Text = dayrow[7].ToString() + "&nbsp;";
+                month9.Text = dayrow[8].ToString() + "&nbsp;";
+                month10.Text = dayrow[9].ToString() + "&nbsp;";
+                month11.Text = dayrow[10].ToString() + "&nbsp;";
+                month12.Text = dayrow[11].ToString() + "&nbsp;";
             }
     	}
     	else{
