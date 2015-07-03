@@ -26,7 +26,7 @@
                         <asp:TextBox runat="server" class="form-control" id="packagetitle" value="" name="packagetitle" />
                     </div>
                 </div>
-                <div class="row">
+                <!--- <div class="row">
                     <div class="col-md-6 margin-bottom-15">
                         <label for="packageimage" class="control-label">Package image</label>
                         <asp:FileUpload class="form-control" id="packageimage" name="packageimage" value="" runat="server" />
@@ -43,13 +43,7 @@
                         <label for="itenary" class="control-label">Itenary Image</label>
                         <asp:FileUpload class="form-control" id="itenary" value="" name="itenary" runat="server" />
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 margin-bottom-15">
-                        <label for="packagedoc" class="control-label">Package Doc/DOCX</label>
-                        <asp:FileUpload class="form-control" id="packagedoc" value="" name="packagedoc" runat="server" />
-                    </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="col-md-6 margin-bottom-15">
                         <label for="daynight" class="control-label">Day / Night(s)</label>
@@ -285,6 +279,7 @@
                         <asp:Button ID="Save" runat="server" type="submit" class="btn btn-primary" Text="Save" OnClick="save_Click" />
                         <asp:Button ID="Update" runat="server" class="btn btn-info" Text="Update" OnClick="Update_Click" />
                         <asp:Button ID="Delete" runat="server" class="btn btn-danger" Text="Delete" OnClick="Delete_Click" />
+                        <asp:HyperLink ID="addfiles" class="btn btn-success" runat="server" NavigateUrl="~/adminarea/packagefiles.aspx">Insert Files</asp:HyperLink>
                     </div>
                 </div>
                 <div class="row">

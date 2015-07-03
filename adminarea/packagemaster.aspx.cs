@@ -18,6 +18,7 @@ public partial class packagemaster : System.Web.UI.Page
         Delete.Visible = false;
         Update.Visible = false;
         lblStatus.Visible = false;
+        addfiles.Visible = false;
     }
     protected void save_Click(object sender, EventArgs e)
     {
@@ -370,6 +371,9 @@ public partial class packagemaster : System.Web.UI.Page
         Delete.Visible = true;
         Update.Visible = true;
         lblStatus.Visible = false;
+        addfiles.Visible = true;
+        string fileurl = "~/adminarea/packagefiles.aspx?id=";
+        addfiles.NavigateUrl = fileurl + grdPackage.Rows[grdPackage.SelectedIndex].Cells[1].Text;
     }
     protected void bindGrid()
     {
